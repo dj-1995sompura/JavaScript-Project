@@ -7,8 +7,8 @@ export function renderTasks(tasks) {
     tasks.forEach((task, index) => {
       const li = document.createElement('li');
       const ul = document.createElement('ul');
-      ul.classList.add('list-group', 'list-group-horizontal', 'mb-2', 'list-horizontal-cst');
-      
+      ul.classList.add('list-group', 'list-group-horizontal', 'my-2', 'list-horizontal-cst');
+
       const taskCheckbox = document.createElement('input');
       taskCheckbox.type = 'checkbox';
       taskCheckbox.id = `task-${index}`;
@@ -16,13 +16,17 @@ export function renderTasks(tasks) {
       taskCheckbox.checked = task.completed || false;
       ul.appendChild(taskCheckbox);
 
+      const taskDetailWrapper = document.createElement('div');
+      taskDetailWrapper.classList.add('task-detail-wrapper');
+      ul.appendChild(taskDetailWrapper);
+
       const taskItem = document.createElement('li');
       taskItem.textContent = task.title.toUpperCase();
-      ul.appendChild(taskItem);
-      
+      taskDetailWrapper.appendChild(taskItem);
+       
       const idItem = document.createElement('li');
       idItem.textContent = task.timeStamp;
-      ul.appendChild(idItem);
+      taskDetailWrapper.appendChild(idItem);
       
       const btnItem = document.createElement('li');
       const deleteBtn = document.createElement('button');
@@ -30,7 +34,7 @@ export function renderTasks(tasks) {
       deleteBtn.id = `delete-${index}`;
       deleteBtn.className = 'btn btn-danger btn-sm';
       btnItem.appendChild(deleteBtn);
-      ul.appendChild(btnItem);
+      taskDetailWrapper.appendChild(btnItem);
       
       li.appendChild(ul);
       taskList.appendChild(li);

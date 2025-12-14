@@ -33,8 +33,14 @@ h1 {
   list-style: none;
   padding: 0;
   margin: 0;
-  justify-content: space-between;
   align-items: center;
+}
+
+.task-detail-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .task-list-cst {
@@ -45,4 +51,12 @@ h1 {
 
 .task-list-cst > li{
   border-bottom: 1px dotted #ccc;
+}
+
+@media screen and (max-width: 550px) {
+  .task-detail-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
