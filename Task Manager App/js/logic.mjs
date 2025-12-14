@@ -1,6 +1,6 @@
 import { renderTasks, updateSummary } from "./ui.mjs";
-export function addTask(taskText, tasks) {
-  tasks.push(taskText);
+export function addTask(task, tasks) {
+  tasks.push(task);
   renderTasks(tasks);
   updateSummary(tasks.length, tasks.filter(t => t.completed).length);
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -13,7 +13,6 @@ export function toggleTask(taskIndex, tasks) {
     renderTasks(tasks);
     updateSummary(tasks.length, tasks.filter(t => t.completed).length);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-
   }
 }
 
@@ -31,7 +30,7 @@ export function filterTasks(filterValue, tasks, filteredTasks) {
   }
 
   renderTasks(filteredTasks);
-  updateSummary(filteredTasks.length);
+  updateSummary(tasks.length, tasks.filter(t => t.completed).length);
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 

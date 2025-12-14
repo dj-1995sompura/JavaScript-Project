@@ -3,7 +3,7 @@ export function handleAddTask(event, tasks) {
   event.preventDefault();
   const taskInput = document.getElementById('task-input');
   const taskText = taskInput.value.trim();
-  const taskTimeStamp = new Date().toLocaleString();
+  const taskTimeStamp = new Date().toLocaleDateString();
   const task = { title: taskText, timeStamp: taskTimeStamp, completed: false };
   if (taskText !== '') {
     // Add task to the tasks array
